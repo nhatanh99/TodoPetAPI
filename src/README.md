@@ -1,0 +1,3 @@
+Hiện tại tôi có nhu cầu cần ghi lại những việc cần làm trong ngày để theo dõi và thực hiện chúng, Như câu theo dõi một việc của tôi bao gồm title công việc, mô tả công việc, trạng thái công việc, ngày tạo công việc đó. Ứng dụng sẽ bao gồm các chức năng tạo một công việc theo dõi mới, có thể update trạng thái, title và mô tả của công việc. Danh sách công việc được sắp xếp theo ngày tạo ( giảm dần ) và có phân trang ( 5 items / 1 page ), có thể search công việc theo title hoặc trạng thái. Khi click vào 1 công việc nào đó có thể xem chi tiết của công việc đó gồm title, mô tả, trạng thái và ngày tạo.
+
+- Yêu cầu: dùng nestjs + postgresql + prisma để triển khai viết result api cho app trên.
