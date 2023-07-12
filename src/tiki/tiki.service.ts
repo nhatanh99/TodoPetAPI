@@ -2,11 +2,14 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
 import { CreateTikiDto } from './dto/create-tiki.dto';
+import { ICar, IQueryTiki, Status } from './entities/tiki.entity';
+import { ISCar1 } from './interface/car.interface';
 import { UpdateTikiDto } from './dto/update-tiki.dto';
-import { IQueryTiki, Status } from './entities/tiki.entity';
+import { CarDto } from './dto/get-car.dto';
 
 @Injectable()
 export class TikiService {
+  PrismaService: any;
   constructor(private prisma: PrismaService) {}
 
   async create(createTikiDto: CreateTikiDto) {
@@ -20,8 +23,8 @@ export class TikiService {
       },
     });
   }
-  async update(id: number, updateTikiDto: UpdateTikiDto) {
-    const data = updateTikiDto;
+  async update(id: number, body: UpdateTikiDto) {
+    const data = body;
     return await this.prisma.task.update({
       where: {
         id: id,
@@ -36,9 +39,8 @@ export class TikiService {
   }
 
   async findAll(query: IQueryTiki) {
-    const skip = (+query.page - 1) * +query.limit;
-    const take = +query.limit;
-
+    const skip = (query.page - 1) * query.limit;
+    const take = query.limit;
     const data = await this.prisma.task.findMany({
       where: {
         OR: [
@@ -63,12 +65,8 @@ export class TikiService {
     };
   }
 
-  async findOne(id: number) {
-    return await this.prisma.task.findUnique({
-      where: {
-        id: id,
-      },
-    });
+  async getCar(body: CarDto, query: ISCar1): Promise<ISCar1[]> {
+    return await this.PrismaService.getCar(body);
   }
 
   async remove(id: number) {

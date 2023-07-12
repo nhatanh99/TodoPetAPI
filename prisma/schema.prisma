@@ -19,3 +19,15 @@ enum Status {
     completed
     pending
 }
+
+model Task11 {
+    id    Int    @id @default(autoincrement())
+    name  String
+    phone String
+    color String
+}
+
+model Car {
+    code Int    @id @default(autoincrement())
+    name String
+}

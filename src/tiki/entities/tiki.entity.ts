@@ -17,3 +17,8 @@ export interface IQueryTiki {
   limit: number;
   search?: string;
 }
+
+export interface ICar {
+  code: number;
+  name: string;
+}

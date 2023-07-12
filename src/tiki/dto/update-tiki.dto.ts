@@ -1,4 +1,3 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateTikiDto } from './create-tiki.dto';
+import { Tiki } from '../entities/tiki.entity';
 
-export class UpdateTikiDto extends PartialType(CreateTikiDto) {}
+export class UpdateTikiDto extends Tiki {}
